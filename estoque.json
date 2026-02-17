@@ -1,0 +1,23 @@
+{
+    "1": {
+        "id": 1,
+        "nome": "Arroz 5kg",
+        "marca": "Tio Urbano",
+        "quantidade": 40,
+        "preco_custo": 15.5
+    },
+    "2": {
+        "id": 2,
+        "nome": "Feijão Preto",
+        "marca": "Kicaldo",
+        "quantidade": 100,
+        "preco_custo": 7.2
+    },
+    "3": {
+        "id": 3,
+        "nome": "Óleo de Soja",
+        "marca": "Soya",
+        "quantidade": 60,
+        "preco_custo": 8.9
+    }
+}
