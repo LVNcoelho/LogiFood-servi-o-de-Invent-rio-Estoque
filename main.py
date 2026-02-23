@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 # para carregar a chave do seu arquivo .env
 load_dotenv()
-genai.configure(api_key="AIzaSyA8OGfWlM1GAkmK1gKSQLJysquXEDL")
+genai.configure(api_key="AIzaSyD3B60NFPKdXHBWsrnpnRsoHWqc-37nrH8")
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 # --- CONFIGURAÇÕES INICIAIS ---
