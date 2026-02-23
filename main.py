@@ -11,7 +11,7 @@ from dotenv import load_dotenv
 # para carregar a chave do seu arquivo .env
 load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel('models/gemini-1.5-flash')
+model = genai.GenerativeModel('models/gemini-1.5-flash-latest')
 
 # --- CONFIGURAÇÕES INICIAIS ---
 app = FastAPI(title="LogiFood Inventory Service - AI Powered")
