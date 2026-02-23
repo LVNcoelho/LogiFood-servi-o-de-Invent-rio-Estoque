@@ -8,10 +8,12 @@ from pydantic import BaseModel, Field
 import google.generativeai as genai
 from dotenv import load_dotenv
 
-# para carregar a chave do seu arquivo .env
+# Carrega as configurações
 load_dotenv()
-genai.configure(api_key="AIzaSyD3B60NFPKdXHBWsrnpnRsoHWqc-37nrH8")
-model = genai.GenerativeModel('gemini-pro')
+
+# CONFIGURAÇÃO DA IA - Sua chave nova e o modelo estável
+genai.configure(api_key="AIzaSyD3B60NFPKdXHBWsrnpnRsoHwqc-37nrH8")
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 # --- CONFIGURAÇÕES INICIAIS ---
 app = FastAPI(title="LogiFood Inventory Service - AI Powered")
@@ -48,16 +50,13 @@ def verificar_chave(x_api_key: str = Header(..., description="Chave de acesso da
         raise HTTPException(status_code=403, detail="Chave inválida.")
     return x_api_key
 
-# --- NOVO ENDPOINT DE IA (TASK #03) ---
-
+# --- ENDPOINT DE IA ---
 @app.get("/ia/consulta", tags=["Inteligência Artificial"])
 def consultar_ia(pergunta: str):
     """Pergunta qualquer coisa para a IA sobre o seu estoque atual."""
-    # 1. Busca os dados reais do seu arquivo
     db = ler_banco()
     estoque_texto = json.dumps(db, indent=2)
     
-    # 2. Configura a "personalidade" da IA
     prompt = f"""
     Você é o Assistente de Inteligência da LogiFood. 
     Sua base de dados é este JSON de estoque:
@@ -68,7 +67,6 @@ def consultar_ia(pergunta: str):
     Pergunta: {pergunta}
     """
     
-    # 3. Chama o Gemini
     try:
         response = model.generate_content(prompt)
         return {"pergunta": pergunta, "resposta": response.text}
@@ -76,7 +74,6 @@ def consultar_ia(pergunta: str):
         raise HTTPException(status_code=500, detail=f"Erro na IA: {str(e)}")
 
 # --- ENDPOINTS ORIGINAIS ---
-
 @app.get("/", tags=["Infos"])
 def raiz():
     return {"message": "API LogiFood com IA ativa! /docs para testar."}
