@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # CONFIGURAÇÃO DA IA - Sua chave nova e o modelo estável
-genai.configure(api_key="AIzaSyD3B60NFPKdXHBWsrnpnRsoHwqc-37nrH8")
+genai.configure(api_key="CHAVE-API-KEY")
 model = genai.GenerativeModel('gemini-1.5-flash')
 
 # --- CONFIGURAÇÕES INICIAIS ---
